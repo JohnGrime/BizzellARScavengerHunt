@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="670 390 120 120" width="120" height="120">
+  <defs/>
+  <metadata> Produced by OmniGraffle 7.17.2\n2020-08-14 14:25:36 +0000</metadata>
+  <g id="Canvas_1" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill-opacity="1" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_140">
+        <rect x="670" y="390" width="120" height="120" fill="white"/>
+      </g>
+      <g id="Group_133">
+        <g id="Graphic_139">
+          <rect x="680" y="445" width="47.5" height="20" fill="#841617"/>
+        </g>
+        <g id="Graphic_138">
+          <rect x="725" y="452.5" width="55" height="12.5" fill="#841617"/>
+        </g>
+        <g id="Graphic_137">
+          <rect x="680" y="460" width="5" height="30" fill="#841617"/>
+        </g>
+        <g id="Graphic_136">
+          <rect x="775" y="460" width="5" height="30" fill="#841617"/>
+        </g>
+        <g id="Graphic_135">
+          <rect x="727.5" y="417.5" width="5" height="72.5" fill="#841617"/>
+        </g>
+        <g id="Graphic_134">
+          <path d="M 700 407.5 L 760 407.5 L 760 410 C 760 410 732.5 412.5 732.5 417.5 C 732.5 422.5 727.5 422.5 727.5 417.5 C 727.5 412.5 700 410 700 410 Z" fill="#841617"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

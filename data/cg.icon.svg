@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="800 390 120 120" width="120" height="120">
+  <defs/>
+  <metadata> Produced by OmniGraffle 7.17.2\n2020-08-14 15:18:09 +0000</metadata>
+  <g id="Canvas_1" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill-opacity="1" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_161">
+        <rect x="800" y="390" width="120" height="120" fill="white"/>
+      </g>
+      <g id="Group_153">
+        <g id="Graphic_160">
+          <circle cx="850" cy="420" r="15.0000239685284" fill="#841617"/>
+          <circle cx="850" cy="420" r="15.0000239685284" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_159">
+          <circle cx="870" cy="417.5" r="15.0000239685284" fill="#841617"/>
+          <circle cx="870" cy="417.5" r="15.0000239685284" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_158">
+          <circle cx="867.5" cy="437.5" r="15.0000239685284" fill="#841617"/>
+          <circle cx="867.5" cy="437.5" r="15.0000239685284" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_157">
+          <ellipse cx="847.5" cy="431.25" rx="17.5000279632833" ry="16.2500259659058" fill="#841617"/>
+          <ellipse cx="847.5" cy="431.25" rx="17.5000279632833" ry="16.2500259659058" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_156">
+          <path d="M 857.87 464.9126 C 858.4652 465.99246 860.1766 466.5485 861.2928 466.02476 C 862.4091 465.501 867.6576 440.6128 867.6576 440.6128 C 867.6576 440.6128 857.2748 463.8328 857.87 464.9126 Z" fill="#841617"/>
+          <path d="M 857.87 464.9126 C 858.4652 465.99246 860.1766 466.5485 861.2928 466.02476 C 862.4091 465.501 867.6576 440.6128 867.6576 440.6128 C 867.6576 440.6128 857.2748 463.8328 857.87 464.9126 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_155">
+          <path d="M 852.5 498.34646 C 855 500.5512 860 500.5512 862.5 498.34646 C 865 496.14173 857.5 430 857.5 430 C 857.5 430 850 496.14173 852.5 498.34646 Z" fill="#841617"/>
+          <path d="M 852.5 498.34646 C 855 500.5512 860 500.5512 862.5 498.34646 C 865 496.14173 857.5 430 857.5 430 C 857.5 430 850 496.14173 852.5 498.34646 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_154">
+          <path d="M 855.1408 458.57815 C 856.3614 458.7527 857.8355 457.72054 858.0889 456.51387 C 858.3424 455.3072 841.6245 436.13746 841.6245 436.13746 C 841.6245 436.13746 853.9203 458.4036 855.1408 458.57815 Z" fill="#841617"/>
+          <path d="M 855.1408 458.57815 C 856.3614 458.7527 857.8355 457.72054 858.0889 456.51387 C 858.3424 455.3072 841.6245 436.13746 841.6245 436.13746 C 841.6245 436.13746 853.9203 458.4036 855.1408 458.57815 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

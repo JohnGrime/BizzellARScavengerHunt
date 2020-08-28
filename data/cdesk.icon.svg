@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="390 0 120 120" width="120" height="120">
+  <defs/>
+  <metadata> Produced by OmniGraffle 7.17.2\n2020-08-14 19:44:35 +0000</metadata>
+  <g id="Canvas_1" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill-opacity="1" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_366">
+        <rect x="390" y="0" width="120" height="120" fill="white"/>
+      </g>
+      <g id="Graphic_365">
+        <rect x="410" y="42.5" width="80" height="52.5" fill="#841617"/>
+        <rect x="410" y="42.5" width="80" height="52.5" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_364">
+        <path d="M 446 92.5 L 454 92.5 C 454.5523 92.5 455 92.94772 455 93.5 L 455 96.5 C 455 97.05228 454.5523 97.5 454 97.5 L 446 97.5 C 445.4477 97.5 445 97.05228 445 96.5 L 445 93.5 C 445 92.94772 445.4477 92.5 446 92.5 Z" fill="#841617"/>
+        <path d="M 446 92.5 L 454 92.5 C 454.5523 92.5 455 92.94772 455 93.5 L 455 96.5 C 455 97.05228 454.5523 97.5 454 97.5 L 446 97.5 C 445.4477 97.5 445 97.05228 445 96.5 L 445 93.5 C 445 92.94772 445.4477 92.5 446 92.5 Z" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_363">
+        <path d="M 487.5 90 C 487.5 90 465 90 460 90 C 455 90 450 92.5 450 92.5 L 450 40 C 450 40 460 35 465 35 C 470 35 487.5 35 487.5 35 Z" fill="white"/>
+        <path d="M 487.5 90 C 487.5 90 465 90 460 90 C 455 90 450 92.5 450 92.5 L 450 40 C 450 40 460 35 465 35 C 470 35 487.5 35 487.5 35 Z" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_362">
+        <path d="M 482.5 85 C 482.5 85 477.5 85 467.5 85 C 457.5 85 450 92.5 450 92.5 L 450 40 C 450 40 460 30 470 30 C 480 30 482.5 30 482.5 30 Z" fill="white"/>
+        <path d="M 482.5 85 C 482.5 85 477.5 85 467.5 85 C 457.5 85 450 92.5 450 92.5 L 450 40 C 450 40 460 30 470 30 C 480 30 482.5 30 482.5 30 Z" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_361">
+        <path d="M 412.5 90 C 412.5 90 435 90 440 90 C 445 90 450 92.5 450 92.5 L 450 40 C 450 40 440 35 435 35 C 430 35 412.5 35 412.5 35 Z" fill="white"/>
+        <path d="M 412.5 90 C 412.5 90 435 90 440 90 C 445 90 450 92.5 450 92.5 L 450 40 C 450 40 440 35 435 35 C 430 35 412.5 35 412.5 35 Z" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_360">
+        <path d="M 417.5 85 C 417.5 85 422.5 85 432.5 85 C 442.5 85 450 92.5 450 92.5 L 450 40 C 450 40 440 30 430 30 C 420 30 417.5 30 417.5 30 Z" fill="white"/>
+        <path d="M 417.5 85 C 417.5 85 422.5 85 432.5 85 C 442.5 85 450 92.5 450 92.5 L 450 40 C 450 40 440 30 430 30 C 420 30 417.5 30 417.5 30 Z" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

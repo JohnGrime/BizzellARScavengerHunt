@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="390 130 120 120" width="120" height="120">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledCenterBall_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -2 4 4" markerWidth="4" markerHeight="4" color="#841617">
+      <g>
+        <circle cx=".8999996" cy="0" r="0.899999085930961" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledCenterBall_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-3 -2 4 4" markerWidth="4" markerHeight="4" color="#841617">
+      <g>
+        <circle cx="-.8999996" cy="0" r="0.899999085930961" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledCenterBall_Marker_3" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 5 6" markerWidth="5" markerHeight="6" color="white">
+      <g>
+        <circle cx="1.3499994" cy="0" r="1.34999862889644" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledCenterBall_Marker_4" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-4 -3 5 6" markerWidth="5" markerHeight="6" color="white">
+      <g>
+        <circle cx="-1.3499994" cy="0" r="1.34999862889644" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.17.2\n2020-08-14 17:03:16 +0000</metadata>
+  <g id="Canvas_1" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill-opacity="1" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_317">
+        <rect x="390" y="130" width="120" height="120" fill="white"/>
+      </g>
+      <g id="Graphic_316">
+        <path d="M 435 170 L 465 170 C 467.7614 170 470 172.23858 470 175 L 470 210 C 470 212.76142 467.7614 215 465 215 L 435 215 C 432.2386 215 430 212.76142 430 210 L 430 175 C 430 172.23858 432.2386 170 435 170 Z" fill="#841617"/>
+        <path d="M 435 170 L 465 170 C 467.7614 170 470 172.23858 470 175 L 470 210 C 470 212.76142 467.7614 215 465 215 L 435 215 C 432.2386 215 430 212.76142 430 210 L 430 175 C 430 172.23858 432.2386 170 435 170 Z" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      </g>
+      <g id="Line_315">
+        <path d="M 483.6 177.5 L 489.5 177.5 C 491.15685 177.5 492.5 176.15685 492.5 174.5 L 492.5 151.1" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_314">
+        <path d="M 483.6 192.5 L 492.5 192.5 L 493.9 192.5" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_313">
+        <path d="M 483.6 207.5 L 489.5 207.5 C 491.15685 207.5 492.5 208.84315 492.5 210.5 L 492.5 218.9" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_312">
+        <path d="M 461.1 225 L 469.5 225 C 471.15685 225 472.5 226.34315 472.5 228 L 472.5 233.9" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_311">
+        <path d="M 438.9 225 L 424.3541 225 C 423.2178 225 422.179 225.642 421.6708 226.65836 L 419.10997 231.78006" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_310">
+        <path d="M 438.6 145 L 454.5 145 C 456.15685 145 457.5 146.34315 457.5 148 L 457.5 156.4" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_309">
+        <path d="M 412.7333 147.34285 L 426.6574 159.27777 C 427.20113 159.74382 427.89364 160 428.60977 160 L 438.9 160" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_308">
+        <path d="M 408.6 192.5 L 412.5 192.5 L 416.4 192.5" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_307">
+        <path d="M 406.1 177.5 L 412.5 177.5 L 416.4 177.5" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_306">
+        <path d="M 402.5 218.9 L 402.5 210.5 C 402.5 208.84315 403.84315 207.5 405.5 207.5 L 416.4 207.5" marker-end="url(#FilledCenterBall_Marker)" marker-start="url(#FilledCenterBall_Marker_2)" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Line_305">
+        <path d="M 482.7 177.5 L 489.5 177.5 C 491.15685 177.5 492.5 176.15685 492.5 174.5 L 492.5 150.2" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_304">
+        <circle cx="492.5" cy="147.5" r="2.50000399475473" fill="#841617"/>
+      </g>
+      <g id="Line_303">
+        <path d="M 482.7 192.5 L 492.5 192.5 L 494.8 192.5" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_302">
+        <circle cx="497.5" cy="192.5" r="2.50000399475475" fill="#841617"/>
+      </g>
+      <g id="Line_301">
+        <path d="M 482.7 207.5 L 489.5 207.5 C 491.15685 207.5 492.5 208.84315 492.5 210.5 L 492.5 219.8" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_300">
+        <circle cx="492.5" cy="222.5" r="2.50000399475474" fill="#841617"/>
+      </g>
+      <g id="Line_299">
+        <path d="M 437.7 145 L 454.5 145 C 456.15685 145 457.5 146.34315 457.5 148 L 457.5 157.3" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_298">
+        <path d="M 412.05 146.75714 L 426.6574 159.27777 C 427.20113 159.74382 427.89364 160 428.60977 160 L 439.8 160" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_297">
+        <path d="M 405.2 177.5 L 412.5 177.5 L 417.3 177.5" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_296">
+        <path d="M 407.7 192.5 L 412.5 192.5 L 417.3 192.5" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_295">
+        <path d="M 402.5 219.8 L 402.5 210.5 C 402.5 208.84315 403.84315 207.5 405.5 207.5 L 417.3 207.5" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_294">
+        <path d="M 460.2 225 L 469.5 225 C 471.15685 225 472.5 226.34315 472.5 228 L 472.5 234.8" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_293">
+        <path d="M 439.8 225 L 424.3541 225 C 423.2178 225 422.179 225.642 421.6708 226.65836 L 418.7075 232.58505" marker-end="url(#FilledCenterBall_Marker_3)" marker-start="url(#FilledCenterBall_Marker_4)" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_292">
+        <circle cx="472.5" cy="237.5" r="2.50000399475474" fill="#841617"/>
+      </g>
+      <g id="Graphic_291">
+        <circle cx="417.5" cy="235" r="2.50000399475472" fill="#841617"/>
+      </g>
+      <g id="Graphic_290">
+        <circle cx="402.5" cy="222.5" r="2.50000399475474" fill="#841617"/>
+      </g>
+      <g id="Graphic_289">
+        <circle cx="405" cy="192.5" r="2.50000399475475" fill="#841617"/>
+      </g>
+      <g id="Graphic_288">
+        <circle cx="402.5" cy="177.5" r="2.50000399475472" fill="#841617"/>
+      </g>
+      <g id="Graphic_287">
+        <circle cx="410" cy="145" r="2.50000399475473" fill="#841617"/>
+      </g>
+      <g id="Graphic_286">
+        <circle cx="435" cy="145" r="2.50000399475474" fill="#841617"/>
+      </g>
+    </g>
+  </g>
+</svg>

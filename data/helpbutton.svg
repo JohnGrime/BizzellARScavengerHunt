@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="662.5 267.5 125 125" width="125" height="125">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="96" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Bold"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.17.2\n2020-08-18 22:04:31 +0000</metadata>
+  <g id="Canvas_1" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1" stroke="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_475">
+        <path d="M 670 270 L 780 270 C 782.7614 270 785 272.23858 785 275 L 785 385 C 785 387.76142 782.7614 390 780 390 L 670 390 C 667.2386 390 665 387.76142 665 385 L 665 275 C 665 272.23858 667.2386 270 670 270 Z" stroke="#841617" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+        <text transform="translate(670 271.10767)" fill="#841617">
+          <tspan font-family="Helvetica Neue" font-size="96" font-weight="700" fill="#841617" x="28.312" y="94">?</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

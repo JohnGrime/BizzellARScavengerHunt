@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	
+	<title>OU Libraries Virtual Tour</title>
+	
+	<!--
+		Add a little animation to the icons when they are found,
+		and set up some styling for the pge elements.
+	-->
+	<style>
+		@keyframes wiggle {
+			0%   { transform: rotate( 0deg)  scale(1.0); }
+			25%  { transform: rotate(-15deg) scale(1.5); }
+			75%  { transform: rotate( 5deg)  scale(1.5) }
+			100% { transform: rotate( 0deg)  scale(1.0) }
+		}
+		div.help {
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+		}
+		div.icon_container {
+			display: block-inline;
+			padding: 10px 10px 0px 10px;
+		}
+		img.icon_found {
+			border-radius: 15px;
+			height: 10vh;
+			animation-name: wiggle;
+			animation-duration: 0.75s;		}
+		img.icon_not_found {
+			border-radius: 15px;
+			height: 10vh;
+			filter: grayscale(100%) blur(5px);
+		}
+	</style>
+
+	<!--
+		Import some Javascript libraries we'll be using:
+		- Three.js
+		- JSARToolKit
+		- THREEx
+	-->
+	<script src='js/three.js'></script>	
+	<script src="jsartoolkit5/artoolkit.min.js"></script>
+	<script src="threex/threex-artoolkitsource.js"></script>
+	<script src="threex/threex-artoolkitcontext.js"></script>
+	<script src="threex/threex-arbasecontrols.js"></script>
+	<script src="threex/threex-armarkercontrols.js"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+<script>
+
+/*
+	The "system" object basically contains all the state we'll be using,
+*/
+let system = {
+
+	// Three.js objects - for overlay of 3D gfx in debug mode.
+	three: {
+		scene:    null,
+		camera:   null,
+		renderer: null,
+	},
+
+	// AR.js objects - for detection of AR markers
+	ar: {
+		source: null,
+		context: null,
+	},
+
+	// Location marker data
+	markers: [
+		{'prefix': 'grr',   'ar_object': null, 'found': false},
+		{'prefix': 'llab',  'ar_object': null, 'found': false},
+		{'prefix': 'cdesk', 'ar_object': null, 'found': false},
+		{'prefix': 'rdesk', 'ar_object': null, 'found': false},
+		{'prefix': 'micro', 'ar_object': null, 'found': false},
+		{'prefix': 'cg',    'ar_object': null, 'found': false},
+		{'prefix': 'edge',  'ar_object': null, 'found': false},
+		],
+
+	// "Hard" clues, indexed using marker prefix
+	hard: {
+"grr":
+"I bear the name of not Harvey, but the actress who played his nurse\n\n\
+You see, I remember faces, but, with names, I'm worse\n\n\
+Despite the red and blue books with the names of those who toiled each fall\n\n\
+Harry Potter is what people say I remind them of most of all",
+
+"llab":
+"Write it down quick so you don't forget\n\
+there are like a million places to sit\n\n\
+Markers color the glass white boards\n\
+and students work, hopeful for that future reward.\n\n\
+Here is where OU undergrads pursue it.",
+	
+"cdesk":
+"Next in line! Next in line! Please step up!\n\n\
+Fines are fine if the books are fine! Yup, yup.\n\n\
+Laptops and course reserves, bones and bits\n\n\
+This is the desk is where all of our check-outs fit",
+
+"rdesk":
+"I've checked the stacks and the creepy decks\n\n\
+This information is fleeting and keeps evading my quests\n\n\
+Never fear! There is still another resource that I can find\n\n\
+To get help with my research at just the right time",
+
+"micro":
+"Maybe your parents hunted here\n\n\
+In-fact, it could be your grands\n\n\
+College-bound\n\n\
+Reaching for knowledge\n\n\
+Over hurdles and tedium they\n\n\
+Found the kernel of truth laying\n\n\
+On the front page\n\n\
+Right above the weather\n\n\
+Mending the tattered\n\n\
+Spirit of an information hunter",
+
+"cg":
+"Peace abounds where nature\n\n\
+Is wildly contain\'ed",
+
+"edge":
+"Tech Sandbox for all\n\n\
+Where the printer chorus sings\n\n\
+Through the shop windows",
+	},
+
+	// "Easy" clues, indexed using marker prefix
+	easy: {
+"grr": "The Peggy V. Helmerich Great Reading room is located on the 2nd floor of the 1929 portion of Bizzell Memorial Library. This room is devoted to quiet study.",
+"llab": "Located on Lower Level I of Bizzell, the Learning Lab has a variety of furniture types and a number of white boards to meet your study needs.",
+"cdesk": "The circulation desk is located at the west entrance of Bizzell. Here you can check out textbooks for many of your courses, laptops, and a number of other technologies. It is also where you bring books from the collections to check them out. As an undergraduate, you may check out up to 150 items at one time.",
+"rdesk" : "The Research Help Desk is located in the computer lab at the west entrance of Bizzell. This is where you can ask your questions about how to find library resources and how to search our many databases and online tools. Each academic major on campus has an assigned subject librarian to assist you with your advanced research needs.",
+"micro": "This technology is excellent for preservation but less so for users. We keep our microform readers on the east side of the 4th floor.",
+"cg": "The Canyon Garden is the only outdoor space affiliated with OU Libraries. You can peer down to the garden near the clock tower located at Bizzell\'s west entrance. You may access it by visiting Lower Level 2 and following the carpeted path.",
+"edge": "The Edge is located on the main floor of Bizzell. This is where you can print 3D models and consult with your peers on 3D modeling projects. You can also set up an appointment to meet with someone on our emerging tech team to learn more about 3D scanning, photogrammetry, data visualization, and more.",
+	},
+
+};
+
+initialize();
+animate();
+
+/*
+	Get/set cookie data; adapted from w3schools examples:
+	https://www.w3schools.com/js/js_cookies.asp
+
+	Cookie data is used to remember which items have already been found, if
+	the user resumes the hunt at a later date.
+*/
+
+function setCookie(key, val, expiry_in_days) {
+	let d = new Date();
+	d.setTime(d.getTime() + (expiry_in_days * 1000*(60*60*24)));
+	document.cookie = `${key}=${val}; expires=${d.toUTCString()}`;
+}
+
+function getCookie(key) {
+	let name = key + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let ca = decodedCookie.split(';');
+	for(let i = 0; i <ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return null;
+}
+
+/*
+	Refresh marker status flags from cookie, and update icon displays.
+*/
+
+function updateMarkers() {
+	let cookie_data = getCookie('cookie');	
+	let vals = (cookie_data == null) ? [] : cookie_data.split(' ');
+	let markers = system.markers;
+	let n = 0;
+
+	// Update marker flags from cookie data
+	for (let i=0; i<markers.length; i++) {
+		markers[i].found = false;
+		if (vals.includes(`${i}`)) {
+			markers[i].found = true;
+			n = n+1;
+		}
+	}
+
+	// Update icon displays from marker flags
+	for (let i=0; i<markers.length; i++) {
+		let icon_img = document.getElementById(`icon${i}`);
+		if (icon_img === null) continue;
+		icon_img.className = (markers[i].found) ? 'icon_found' : 'icon_not_found';
+	}
+
+	// All found?
+	if (n == markers.length) {
+		alert('All locations found!\nShow this screen at the Research Help Desk to collect your free 3D printed OU earsaver (supplies limited)');
+	}
+
+	return n;
+}
+
+/*
+	Update cookie after a marker is found.
+	Note - passing "null" will clear cookie entirely.
+*/
+
+function updateCookie(new_val) {
+	let key = 'cookie';
+
+	// Clear cookie?
+	if (new_val == null) {
+		console.log('Initial cookie was: ' + getCookie(key));
+		setCookie(key, '', 0);
+		console.log('Initial cookie is: ' + getCookie(key));	
+		updateMarkers();
+		return;
+	}
+
+	let cookie_data = getCookie(key);	
+	let vals = (cookie_data == null) ? [] : cookie_data.split(' ');
+	let days_valid = 1;
+
+	// Add new value to cookie, if not already present
+	if (!vals.includes(`${new_val}`)) {
+		console.log(`${new_val} not in ${cookie_data}; adding`);
+		setCookie(key, (cookie_data==null) ? `${new_val}` : cookie_data+` ${new_val} `, days_valid);
+	}
+
+	updateMarkers();
+}
+
+/*
+	Generate list of icons for locations to find.
+*/
+
+function generateIcons(mode) {
+	let icons = document.getElementById('icons');
+	let markers = system.markers;
+
+	if (! mode in system) {
+		alert(`Unknown mode ${mode}; reverting to hard`);
+	}
+
+	for (let i=0; i<markers.length; i++ ) {
+		let tag = markers[i].prefix;
+
+		// Container
+		let icon_div = document.createElement('div');
+		icon_div.className = 'icon_container';
+
+		// Icon image
+		let icon_img = document.createElement('img');
+		icon_img.className = 'icon_not_found';
+		icon_img.id = `icon${i}`;
+		icon_img.src = `data/${tag}.icon.svg`;
+
+		let clue = (mode == "easy") ? system.easy[tag] : system.hard[tag];
+		icon_img.addEventListener('click', function(event) {
+			alert(clue);
+			console.log(clue);
+		});
+
+		// Connect to click listener
+		icon_div.appendChild(icon_img);
+
+		// Add icon to page
+		icons.appendChild(icon_div);
+	}	
+}
+
+/*
+	Debug.
+*/
+
+function printFlags() {
+	let str = '';
+	for (const m of system.markers) {
+		let found = (m.found) ? 1 : 0;
+		let obj_visible = (m.ar_object.obj_visible) ? 1 : 0;
+		str = str + `${m.prefix}: ${found} ${obj_visible}; `;
+	}
+	console.log(str);
+}
+
+/*
+	Problems with portrait mode on iOS, for some reason: AR overlay
+	has wrong aspect ratio, or projection matrix is screwy. Works okay
+	in landscape mode.
+*/
+
+function onResize()
+{
+	let renderer = system.three.renderer;
+	let source = system.ar.source;
+	let context = system.ar.context;
+
+	source.onResizeElement();
+	source.copyElementSizeTo(renderer.domElement);
+
+	if (context.arController !== null) {
+		source.copyElementSizeTo(context.arController.canvas);
+	}
+}
+
+/*
+	Set up page, including AR stuff.
+*/
+
+function initialize()
+{
+	let debug = false;
+	let mode = "hard";
+
+	// Examine query params passed in URL, and update
+	// debug and mode flags if needed.
+	{
+		const query = window.location.search;
+		if (query) {
+			const params = new URLSearchParams(query);
+
+			const m = params.get('mode');
+			if (m == "easy") {
+				mode = "easy";
+			}
+
+			const d = params.get('debug');
+			if (d == "true") {
+				debug = true;
+			}
+		}
+	}
+
+	// Page element setup
+	{
+		// Container for icons
+		let icons = document.createElement('div');
+		icons.id = 'icons';
+		document.body.appendChild(icons);
+
+		// Button to clear cookies; debug only.
+		if (debug) {
+			let clearButton = document.createElement('button');
+			clearButton.innerHTML = 'Clear cookie';
+			clearButton.addEventListener('click', function(event) {
+				updateCookie(null);
+			});
+			document.body.appendChild(clearButton);
+		}
+
+		// Canvas for AR content
+		let canvas = document.createElement('canvas');
+		canvas.id = 'arCanvas';
+		document.body.appendChild(canvas);
+
+		// Help button on lower right; wrap an img in a link
+		// inside a div of class "help" (as per the CSS).
+		let helpdiv = document.createElement('div');
+		helpdiv.className = "help";
+
+		let helpref = document.createElement('a');
+		helpref.href = "help.html";
+
+		let helpimg = document.createElement('img');
+		helpimg.src = "data/helpbutton.svg";
+
+		helpref.appendChild(helpimg);
+		helpdiv.appendChild(helpref);
+		document.body.appendChild(helpdiv);
+	}
+
+	// Generate icons
+	{
+		generateIcons(mode);
+
+		let n = updateMarkers();
+		if (n == system.markers.length) {
+			// Already finished!
+			return;
+		}
+	}
+
+	// 3D scene setup
+	{
+		let scene = new THREE.Scene();
+		let camera = new THREE.Camera();
+		let renderer = new THREE.WebGLRenderer({
+			antialias : true,
+			alpha: true,
+			canvas: arCanvas,
+		});		
+		let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
+
+		system.three.scene = scene;
+		system.three.camera = camera;
+		system.three.renderer = renderer;
+
+		scene.add(ambientLight);
+		scene.add(camera);
+
+		renderer.setClearColor(new THREE.Color('lightgrey'), 0);
+		renderer.setSize(640, 480);
+		renderer.domElement.style.position = 'absolute';
+		renderer.domElement.style.top = '0px';
+		renderer.domElement.style.left = '0px';
+
+		// Only if we've not specified a canvas in renderer init!
+		//document.body.appendChild(renderer.domElement);
+	}
+
+	// AR setup
+	{
+		let ar_src = new THREEx.ArToolkitSource({
+			sourceType: 'webcam',
+		});
+
+		let ar_ctx = new THREEx.ArToolkitContext({
+			cameraParametersUrl: 'data/camera_para.dat',
+			detectionMode: 'mono',
+			maxDetectionRate: 30,
+		});
+
+		system.ar.source = ar_src;
+		system.ar.context = ar_ctx;
+
+		ar_src.init(function onReady(){
+			onResize()
+		});
+		
+		// copy projection matrix to camera when initialization complete
+		ar_ctx.init( function onCompleted(){
+			let camera = system.three.camera;
+			let ar_ctx = system.ar.context;
+			camera.projectionMatrix.copy(ar_ctx.getProjectionMatrix());
+		});
+	}
+
+	// Marker setup
+	{
+		let scene = system.three.scene;
+		let ar_ctx = system.ar.context;
+		let markers = system.markers;
+
+		for (let marker of markers) {
+			let markerRoot = new THREE.Group();
+			scene.add(markerRoot);
+
+			let markerControls = new THREEx.ArMarkerControls(ar_ctx, markerRoot, {
+				type: 'pattern',
+				patternUrl: `data/${marker.prefix}.patt`,
+			});
+
+			// Debug - superpose cube over located markers.
+			// Projection borked in portrait mode on iOS and Android!
+			if (debug) {
+				let geometry = new THREE.CubeGeometry(1,1,1);
+				let material = new THREE.MeshNormalMaterial({
+					transparent: true,
+					opacity: 0.5,
+					side: THREE.DoubleSide
+				}); 
+				
+				let mesh = new THREE.Mesh(geometry, material);
+				mesh.position.y = 0.5;
+				
+				markerRoot.add(mesh);
+			}
+
+			marker.ar_object = markerRoot;
+			marker.found = false;
+
+			/*
+			// First frame after finding a marker?
+			// Moved into update loop; keep as events for production, as we only
+			// need single trigger?
+			markerControls.addEventListener('markerFound', (e) => {
+				if (marker.found === true) return;
+				marker.found = true;
+				printFlags();
+			});
+			*/
+		}
+	}	
+
+	// Add some tweaks for GUI
+	{
+		let renderer = system.three.renderer;
+		let ar_src = system.ar.source;
+
+		renderer.domElement.addEventListener('click', function (e) {
+			alert('renderer clicked!');
+		});
+
+		ar_src.domElement.addEventListener('click', function (e) {
+			alert('ARSource clicked!');
+		});
+
+		// Set z order so rendered graphics goes behind the GUI elements,
+		// but in front of the AR video feed.
+		renderer.domElement.style.zIndex = -1;
+		ar_src.domElement.style.zIndex = -2;
+	}
+
+	window.addEventListener('resize', function(){
+		onResize()
+	});
+}
+
+function update()
+{
+	let ar_src = system.ar.source;
+	let ar_ctx = system.ar.context;
+	let markers = system.markers;
+
+	if (ar_src.ready !== false) {
+		ar_ctx.update(ar_src.domElement);
+	}
+
+	for (let i=0; i<markers.length; i++) {
+		let marker = markers[i];
+
+		// First frame after acquiring a marker?
+		if (marker.found === false && marker.ar_object.visible) {
+			marker.found = true;
+			updateCookie(i);
+		}
+
+		/*
+		// First frame after losing a marker?
+		if (marker.found === true && !marker.ar_object.visible) {
+			marker.found = false;
+			updateCookie(i);
+		}
+		*/
+	}
+}
+
+
+function render()
+{
+	let scene = system.three.scene;
+	let camera = system.three.camera;
+	let renderer = system.three.renderer;
+
+	renderer.render(scene, camera);
+}
+
+
+function animate()
+{
+	requestAnimationFrame(animate);
+	update();
+	render();
+}
+
+</script>
+
+</body>
+</html>

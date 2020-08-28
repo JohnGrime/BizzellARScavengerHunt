@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<head>
+	<title>OU Libraries Virtual Tour</title>
+
+	<style type="text/css">
+		.title {
+			font-family: Verdana;
+			font-size:   36pt;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		.body {
+			font-family: Verdana;
+			font-size:   20pt;
+			text-align: center;
+		}
+
+		.links {
+			display: flex;
+			justify-content: space-between;
+
+			font-size:   24pt;
+		}
+	</style>
+</head>
+
+<!--
+	Make the header graphic fill the full width of the screen
+-->
+
+<img src="data/header.png" style="width:100%;height:20%;">
+
+<!--
+	Formatted text
+-->
+
+<div class="title">
+	OU Libraries Virtual Tour
+</div>
+
+<br>
+
+<div class="body">
+Scan the markers located throughout the library with your mobile device or check out an iPad from circulation.
+<br><br>
+Select "easy mode" or "hard mode" below to start scanning. You will see a set of icons on the left of your screen; click an icon for directions to the location (easy mode) or a clue to decipher (hard mode).
+<br><br>
+<b>Don't worry - you can return to this page to swap between easy and hard mode whenever you like!</b>
+<br><br>
+To scan a marker, simply point your phone camera at it! When a marker is recognized, its icon will turn red.
+<br><br>
+Find all 7 markers and receive a free 3D printed OU earsaver at the Research Help Desk (supplies are limited).
+</div>
+
+<br><br>
+
+<!--
+	Link out to the actual hunt screen, or a supplementary help screen.
+	The hunt screen allows you to pass "mode=easy" or "mode-hard" to swap
+	the content of the clues that appear when you click on the icons that
+	represent location on the left hand side of the screen.
+
+	You can also use e.g. "hunt.html?mode=easy&debug=true" to enable debug
+	mode, adding a button to clear the icon cookie and highlighting the
+	location of the identified markers in the video stream.
+-->
+
+<div class="links">
+	<div>
+		<a href="hunt.html?mode=easy">Easy mode</a>
+	</div>
+
+	<div>
+		<a href="hunt.html?mode=hard">Hard mode</a>
+	</div>
+
+	<div>
+		<a href="help.html">Help</a>
+	</div>
+</div>
+
+</body>
+</html>
+
