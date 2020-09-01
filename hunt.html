@@ -240,11 +240,9 @@ function updateMarkers() {
 	if (n == markers.length) {
 		alert('All locations found!\nShow this screen at the Research Help Desk to collect your free 3D printed OU earsaver (supplies limited)');
 
-		// Unique id ping to server on page startup
-		{
-			let uuid = pingUUID('id', 'final');
-			console.log(`Ended with ID ${uuid}`);
-		}
+		// Unique id ping to server on completion
+		let uuid = pingUUID('id', 'final');
+		console.log(`Ended with ID ${uuid}`);
 	}
 
 	return n;
