@@ -5,21 +5,12 @@
 	
 	<title>OU Libraries Virtual Tour</title>
 	
-	<!--
-		Add a little animation to the icons when they are found,
-		and set up some styling for the pge elements.
-	-->
 	<style>
 		@keyframes wiggle {
 			0%   { transform: rotate( 0deg)  scale(1.0); }
 			25%  { transform: rotate(-15deg) scale(1.5); }
 			75%  { transform: rotate( 5deg)  scale(1.5) }
 			100% { transform: rotate( 0deg)  scale(1.0) }
-		}
-		div.help {
-			position: absolute;
-			right: 0px;
-			bottom: 0px;
 		}
 		div.icon_container {
 			display: block-inline;
@@ -35,14 +26,14 @@
 			height: 10vh;
 			filter: grayscale(100%) blur(5px);
 		}
+
+		div.help {
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+		}
 	</style>
 
-	<!--
-		Import some Javascript libraries we'll be using:
-		- Three.js
-		- JSARToolKit
-		- THREEx
-	-->
 	<script src='js/three.js'></script>	
 	<script src="jsartoolkit5/artoolkit.min.js"></script>
 	<script src="threex/threex-artoolkitsource.js"></script>
@@ -55,25 +46,18 @@
 
 <script>
 
-/*
-	The "system" object basically contains all the state we'll be using,
-*/
 let system = {
-
-	// Three.js objects - for overlay of 3D gfx in debug mode.
 	three: {
 		scene:    null,
 		camera:   null,
 		renderer: null,
 	},
 
-	// AR.js objects - for detection of AR markers
 	ar: {
 		source: null,
 		context: null,
 	},
 
-	// Location marker data
 	markers: [
 		{'prefix': 'grr',   'ar_object': null, 'found': false},
 		{'prefix': 'llab',  'ar_object': null, 'found': false},
@@ -84,7 +68,6 @@ let system = {
 		{'prefix': 'edge',  'ar_object': null, 'found': false},
 		],
 
-	// "Hard" clues, indexed using marker prefix
 	hard: {
 "grr":
 "I bear the name of not Harvey, but the actress who played his nurse\n\n\
@@ -133,15 +116,14 @@ Where the printer chorus sings\n\n\
 Through the shop windows",
 	},
 
-	// "Easy" clues, indexed using marker prefix
 	easy: {
-"grr": "The Peggy V. Helmerich Great Reading room is located on the 2nd floor of the 1929 portion of Bizzell Memorial Library. This room is devoted to quiet study.",
-"llab": "Located on Lower Level I of Bizzell, the Learning Lab has a variety of furniture types and a number of white boards to meet your study needs.",
-"cdesk": "The circulation desk is located at the west entrance of Bizzell. Here you can check out textbooks for many of your courses, laptops, and a number of other technologies. It is also where you bring books from the collections to check them out. As an undergraduate, you may check out up to 150 items at one time.",
-"rdesk" : "The Research Help Desk is located in the computer lab at the west entrance of Bizzell. This is where you can ask your questions about how to find library resources and how to search our many databases and online tools. Each academic major on campus has an assigned subject librarian to assist you with your advanced research needs.",
-"micro": "This technology is excellent for preservation but less so for users. We keep our microform readers on the east side of the 4th floor.",
-"cg": "The Canyon Garden is the only outdoor space affiliated with OU Libraries. You can peer down to the garden near the clock tower located at Bizzell\'s west entrance. You may access it by visiting Lower Level 2 and following the carpeted path.",
-"edge": "The Edge is located on the main floor of Bizzell. This is where you can print 3D models and consult with your peers on 3D modeling projects. You can also set up an appointment to meet with someone on our emerging tech team to learn more about 3D scanning, photogrammetry, data visualization, and more.",
+	"grr": "The Peggy V. Helmerich Great Reading room is located on the 2nd floor of the 1929 portion of Bizzell Memorial Library. This room is devoted to quiet study.",
+	"llab": "Located on Lower Level I of Bizzell, the Learning Lab has a variety of furniture types and a number of white boards to meet your study needs.",
+	"cdesk": "The circulation desk is located at the west entrance of Bizzell. Here you can check out textbooks for many of your courses, laptops, and a number of other technologies. It is also where you bring books from the collections to check them out. As an undergraduate, you may check out up to 150 items at one time.",
+	"rdesk" : "The Research Help Desk is located in the computer lab at the west entrance of Bizzell. This is where you can ask your questions about how to find library resources and how to search our many databases and online tools. Each academic major on campus has an assigned subject librarian to assist you with your advanced research needs.",
+	"micro": "This technology is excellent for preservation but less so for users. We keep our microform readers on the east side of the 4th floor.",
+	"cg": "The Canyon Garden is the only outdoor space affiliated with OU Libraries. You can peer down to the garden near the clock tower located at Bizzell\'s west entrance. You may access it by visiting Lower Level 2 and following the carpeted path.",
+	"edge": "The Edge is located on the main floor of Bizzell. This is where you can print 3D models and consult with your peers on 3D modeling projects. You can also set up an appointment to meet with someone on our emerging tech team to learn more about 3D scanning, photogrammetry, data visualization, and more.",
 	},
 
 };
@@ -180,11 +162,60 @@ function getCookie(key) {
 }
 
 /*
+	UUID cookie value functions.
+*/
+
+// https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+}
+
+function resetUUID() {
+	let key = 'uid';
+
+	console.log(`Cookie value for '${key}' was: ` + getCookie(key));
+	setCookie(key, '', 0);
+	console.log(`Cookie value for '${key}' is: ` + getCookie(key));
+
+	let uuid = uuidv4();
+	setCookie(key, uuid);
+	console.log(`Cookie value for '${key}' is: ` + getCookie(key));
+
+	return uuid;
+}
+
+function getUUIDFromCookie() {
+	let key = 'uid';
+	let cookie_data = getCookie(key);
+
+	if (cookie_data == null) {
+		return resetUUID();
+	}
+
+	return cookie_data;
+}
+
+function pingUUID(prefix, suffix) {
+	let uuid = getUUIDFromCookie();
+
+	// Don't care about the results of this fetch, we
+	// we just want the miss in the server logs.
+	let dummy = fetch(`${prefix}.${uuid}.${suffix}`)
+		.then( function (response) {
+			console.log(response);
+		});
+
+	return uuid;
+}
+
+/*
 	Refresh marker status flags from cookie, and update icon displays.
 */
 
 function updateMarkers() {
-	let cookie_data = getCookie('cookie');	
+	let cookie_data = getCookie('cookie');
 	let vals = (cookie_data == null) ? [] : cookie_data.split(' ');
 	let markers = system.markers;
 	let n = 0;
@@ -208,6 +239,12 @@ function updateMarkers() {
 	// All found?
 	if (n == markers.length) {
 		alert('All locations found!\nShow this screen at the Research Help Desk to collect your free 3D printed OU earsaver (supplies limited)');
+
+		// Unique id ping to server on page startup
+		{
+			let uuid = pingUUID('id', 'final');
+			console.log(`Ended with ID ${uuid}`);
+		}
 	}
 
 	return n;
@@ -218,19 +255,19 @@ function updateMarkers() {
 	Note - passing "null" will clear cookie entirely.
 */
 
-function updateCookie(new_val) {
+function updateMarkerCookie(new_val) {
 	let key = 'cookie';
 
 	// Clear cookie?
 	if (new_val == null) {
-		console.log('Initial cookie was: ' + getCookie(key));
+		console.log(`Cookie value for '${key}' was: ` + getCookie(key));
 		setCookie(key, '', 0);
-		console.log('Initial cookie is: ' + getCookie(key));	
+		console.log(`Cookie value for '${key}' is: ` + getCookie(key));
 		updateMarkers();
 		return;
 	}
 
-	let cookie_data = getCookie(key);	
+	let cookie_data = getCookie(key);
 	let vals = (cookie_data == null) ? [] : cookie_data.split(' ');
 	let days_valid = 1;
 
@@ -325,8 +362,13 @@ function initialize()
 	let debug = false;
 	let mode = "hard";
 
-	// Examine query params passed in URL, and update
-	// debug and mode flags if needed.
+	// Unique id ping to server on page startup
+	{
+		let uuid = pingUUID('id', 'initial');
+		console.log(`Started with ID ${uuid}`);
+	}
+
+	// Query params, if any.
 	{
 		const query = window.location.search;
 		if (query) {
@@ -356,7 +398,10 @@ function initialize()
 			let clearButton = document.createElement('button');
 			clearButton.innerHTML = 'Clear cookie';
 			clearButton.addEventListener('click', function(event) {
-				updateCookie(null);
+				updateMarkerCookie(null);
+				resetUUID();
+				let uuid = pingUUID('id', 'initial');
+				console.log(`Restarted with ID ${uuid}`);
 			});
 			document.body.appendChild(clearButton);
 		}
@@ -366,23 +411,21 @@ function initialize()
 		canvas.id = 'arCanvas';
 		document.body.appendChild(canvas);
 
-		// Help button on lower right; wrap an img in a link
-		// inside a div of class "help" (as per the CSS).
+		// Help button on lower right
 		let helpdiv = document.createElement('div');
-		helpdiv.className = "help";
-
 		let helpref = document.createElement('a');
-		helpref.href = "help.html";
-
 		let helpimg = document.createElement('img');
+
+		helpdiv.className = "help";
+		helpref.href = "help.html";
 		helpimg.src = "data/helpbutton.svg";
 
 		helpref.appendChild(helpimg);
 		helpdiv.appendChild(helpref);
+
 		document.body.appendChild(helpdiv);
 	}
 
-	// Generate icons
 	{
 		generateIcons(mode);
 
@@ -508,7 +551,7 @@ function initialize()
 			alert('ARSource clicked!');
 		});
 
-		// Set z order so rendered graphics goes behind the GUI elements,
+		// Set z order so Rendered graphics goes behind the GUI elements,
 		// but in front of the AR video feed.
 		renderer.domElement.style.zIndex = -1;
 		ar_src.domElement.style.zIndex = -2;
@@ -517,6 +560,15 @@ function initialize()
 	window.addEventListener('resize', function(){
 		onResize()
 	});
+
+	/*
+	generateIcons(mode);
+
+	let n = updateMarkers();
+	if (n == system.markers.length) {
+		// Already finished!
+	}
+	*/
 }
 
 function update()
@@ -535,14 +587,14 @@ function update()
 		// First frame after acquiring a marker?
 		if (marker.found === false && marker.ar_object.visible) {
 			marker.found = true;
-			updateCookie(i);
+			updateMarkerCookie(i);
 		}
 
 		/*
 		// First frame after losing a marker?
 		if (marker.found === true && !marker.ar_object.visible) {
 			marker.found = false;
-			updateCookie(i);
+			updateMarkerCookie(i);
 		}
 		*/
 	}
