@@ -1,6 +1,6 @@
 # Bizzell Library AR Scavenger Hunt 2020
 
-A simple web-based AR experience to encourage students to explore the Bizzell Library building.
+A simple web-based AR experience to encourage students to explore the Bizzell Library building. Thanks to [Bobby Reed](https://www.linkedin.com/in/bobbylreed) for the text used in the clues!
 
 ## Contents
 
