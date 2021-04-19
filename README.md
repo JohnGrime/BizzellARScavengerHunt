@@ -12,7 +12,7 @@ A simple web-based AR experience to encourage students to explore the Bizzell Li
 
 ## <a name="Introduction"></a> Introduction
 
-This is a web-based AR experience intended to encourage new students to explore the Bizzell Library at the University of Oklahoma. The initiative is designed to help maintain social distancing by alleviating the need for a traditional "lead a group of students on a tour" approach.
+This is a web-based AR experience intended to encourage new students to explore the [Bizzell Library](https://libraries.ou.edu/content/bizzell-memorial-library) at the University of Oklahoma. The initiative is designed to help maintain social distancing by alleviating the need for a traditional "lead a group of students on a tour" approach.
 
 The webpage is intended to be visited using a mobile device with a camera. The introductory page offers basic information and guidance, and includes links into a more detailed help page and the main scavenger hunt display.
 
